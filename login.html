@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartAgri Advisor - Farming Made Smarter</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Login Page -->
+  <div id="login-page" class="page active">
+    <div class="login-container">
+      <div class="login-overlay"></div>
+      <div class="login-card">
+        <div class="login-header">
+          <h1 class="app-title">SmartAgri Advisor</h1>
+          <p class="app-subtitle">Farming made smarter</p>
+        </div>
+        <form class="login-form" onsubmit="login(event)">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="Enter phone number" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-input">
+              <input type="password" id="password" placeholder="Enter password" required>
+              <button type="button" class="toggle-password" onclick="togglePassword()">
+                <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="language">Language</label>
+            <select id="language">
+              <option value="English">English</option>
+              <option value="தமிழ்">தமிழ்</option>
+              <option value="हिंदी">हिंदी</option>
+              <option value="ಕನ್ನಡ">ಕನ್ನಡ</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-large">Login</button>
+          <div class="text-center">
+            <button type="button" class="btn-link">Login with OTP</button>
+          </div>
+          <div class="demo-text">Demo: Use any phone number and password</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Splash Screen -->
+  <div id="splash-page" class="page">
+    <div class="splash-container">
+      <div class="splash-overlay"></div>
+      <div class="splash-content">
+        <div class="splash-icon">
+          <svg width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+            <path d="M7 20h10"></path>
+            <path d="M10 20c0-1.5.8-2.5 2-2.5s2 1 2 2.5"></path>
+            <path d="M12 17V7"></path>
+            <path d="M12 7c-1.5 0-2-1-2-2s.5-2 2-2 2 1 2 2-.5 2-2 2z"></path>
+          </svg>
+        </div>
+        <h1 class="splash-title">SmartAgri Advisor</h1>
+        <p class="splash-subtitle">Farming made smarter</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard-page" class="page">
+    <header class="app-header">
+      <div class="header-content">
+        <h1 class="header-title">Tamil Nadu, India</h1>
+        <p class="header-subtitle">Crop: Rice 🌾</p>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="dashboard-grid">
+        <div class="dashboard-card" onclick="navigateTo('weather-page')">
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Weather Forecast</h3>
+            <p class="card-description">7-day forecast and rainfall predictions</p>
+          </div>
+        </div>
+
+        <div class="dashboard-card" onclick="navigateTo('sensor-page')">
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Soil Moisture</h3>
+            <p class="card-description">Real-time sensor data and monitoring</p>
+          </div>
+        </div>
+
+        <div class="dashboard-card" onclick="navigateTo('crop-page')">
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M7 20h10"></path>
+              <path d="M10 20c0-1.5.8-2.5 2-2.5s2 1 2 2.5"></path>
+              <path d="M12 17V7"></path>
+              <path d="M12 7c-1.5 0-2-1-2-2s.5-2 2-2 2 1 2 2-.5 2-2 2z"></path>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Irrigation Advice</h3>
+            <p class="card-description">Optimal watering schedule and tips</p>
+          </div>
+        </div>
+
+        <div class="dashboard-card" onclick="navigateTo('pest-page')">
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="m8 2 1.88 1.88"></path>
+              <path d="M14.12 3.88 16 2"></path>
+              <path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"></path>
+              <path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"></path>
+              <path d="M12 20v-9"></path>
+              <path d="M6.53 9C4.6 8.8 3 7.1 3 5"></path>
+              <path d="M6 13H2"></path>
+              <path d="M3 21c0-2.1 1.7-3.9 3.8-4"></path>
+              <path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"></path>
+              <path d="M22 13h-4"></path>
+              <path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"></path>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Pest & Disease Alerts</h3>
+            <p class="card-description">Early detection and treatment recommendations</p>
+          </div>
+        </div>
+
+        <div class="dashboard-card" onclick="navigateTo('crop-page')">
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path>
+              <path d="M8.5 2h7"></path>
+              <path d="M7 16h10"></path>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Fertilizer Recommendation</h3>
+            <p class="card-description">Customized fertilizer plans for your crop</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Sensor Data Page -->
+  <div id="sensor-page" class="page">
+    <header class="app-header">
+      <div class="header-content">
+        <button class="btn-back" onclick="navigateTo('dashboard-page')">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <h1 class="header-title">Sensor Data</h1>
+        <button class="btn-refresh" onclick="refreshSensorData()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+          </svg>
+          Refresh
+        </button>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="sensor-timestamp">Last updated: <span id="sensor-time">--:--:--</span></div>
+      <div class="sensor-grid">
+        <div class="sensor-card">
+          <h3 class="sensor-title">Soil Moisture</h3>
+          <div class="sensor-value" id="moisture-value">65%</div>
+          <div class="progress-bar">
+            <div class="progress-fill progress-success" id="moisture-bar" style="width: 65%"></div>
+          </div>
+          <div class="sensor-status status-success">Good</div>
+        </div>
+
+        <div class="sensor-card">
+          <h3 class="sensor-title">Temperature</h3>
+          <div class="sensor-value" id="temp-value">28°C</div>
+          <div class="progress-bar">
+            <div class="progress-fill progress-success" id="temp-bar" style="width: 56%"></div>
+          </div>
+          <div class="sensor-status status-success">Optimal</div>
+        </div>
+
+        <div class="sensor-card">
+          <h3 class="sensor-title">Humidity</h3>
+          <div class="sensor-value" id="humidity-value">75%</div>
+          <div class="progress-bar">
+            <div class="progress-fill progress-success" id="humidity-bar" style="width: 75%"></div>
+          </div>
+          <div class="sensor-status status-success">Good</div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3 class="chart-title">Historical Data</h3>
+        <div class="chart-placeholder">
+          <svg width="100%" height="300" viewBox="0 0 800 300">
+            <line x1="50" y1="250" x2="750" y2="250" stroke="#e5e7eb" stroke-width="2"/>
+            <line x1="50" y1="50" x2="50" y2="250" stroke="#e5e7eb" stroke-width="2"/>
+            <polyline points="50,200 150,180 250,160 350,140 450,120 550,100 650,90 750,80" fill="none" stroke="#2d7a3e" stroke-width="3"/>
+            <polyline points="50,220 150,210 250,200 350,190 450,180 550,170 650,160 750,150" fill="none" stroke="#dc2626" stroke-width="3"/>
+            <polyline points="50,180 150,170 250,165 350,160 450,155 550,150 650,145 750,140" fill="none" stroke="#f59e0b" stroke-width="3"/>
+            <text x="400" y="280" text-anchor="middle" fill="#6b7280" font-size="14">Time</text>
+            <text x="20" y="150" text-anchor="middle" fill="#6b7280" font-size="14" transform="rotate(-90 20 150)">Value</text>
+          </svg>
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item">
+            <span class="legend-color" style="background: #2d7a3e"></span>
+            <span>Moisture</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color" style="background: #dc2626"></span>
+            <span>Temperature</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color" style="background: #f59e0b"></span>
+            <span>Humidity</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Crop Advisory Page -->
+  <div id="crop-page" class="page">
+    <header class="app-header">
+      <div class="header-content">
+        <button class="btn-back" onclick="navigateTo('dashboard-page')">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <div>
+          <h1 class="header-title">Rice - Monsoon 2024</h1>
+          <p class="header-subtitle">Comprehensive crop advisory</p>
+        </div>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="advisory-grid">
+        <div class="advisory-card">
+          <div class="advisory-header">
+            <div class="advisory-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <h3 class="advisory-title">Optimal Sowing Time</h3>
+          </div>
+          <div class="advisory-content">
+            <p class="advisory-main">Best sowing period: June 15 - July 15</p>
+            <p class="advisory-detail">Ensure soil moisture is adequate before sowing. Pre-monsoon preparation is crucial for optimal germination.</p>
+          </div>
+        </div>
+
+        <div class="advisory-card">
+          <div class="advisory-header">
+            <div class="advisory-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+              </svg>
+            </div>
+            <h3 class="advisory-title">Irrigation Schedule</h3>
+          </div>
+          <div class="advisory-content">
+            <p class="advisory-main">Water every 3-4 days during vegetative stage</p>
+            <p class="advisory-detail">Maintain 2-3 inches of standing water during flowering. Reduce irrigation 10 days before harvest.</p>
+          </div>
+        </div>
+
+        <div class="advisory-card">
+          <div class="advisory-header">
+            <div class="advisory-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path>
+                <path d="M8.5 2h7"></path>
+                <path d="M7 16h10"></path>
+              </svg>
+            </div>
+            <h3 class="advisory-title">Fertilizer Plan</h3>
+          </div>
+          <div class="advisory-content">
+            <p class="advisory-main">NPK ratio: 120:60:40 kg/hectare</p>
+            <ul class="advisory-list">
+              <li>Basal: 50% N, 100% P, 50% K at sowing</li>
+              <li>Top dress: 25% N at tillering stage</li>
+              <li>Top dress: 25% N and 50% K at panicle initiation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="advisory-card">
+          <div class="advisory-header">
+            <div class="advisory-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                <path d="M9 18h6"></path>
+                <path d="M10 22h4"></path>
+              </svg>
+            </div>
+            <h3 class="advisory-title">Climate-Resilient Tips</h3>
+          </div>
+          <div class="advisory-content">
+            <ul class="advisory-list">
+              <li>Use drought-resistant varieties like CR Dhan 40</li>
+              <li>Practice System of Rice Intensification (SRI)</li>
+              <li>Implement alternate wetting and drying</li>
+              <li>Monitor weather forecasts regularly</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="action-center">
+        <button class="btn btn-primary btn-large">View Full Advice</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Pest Alerts Page -->
+  <div id="pest-page" class="page">
+    <header class="app-header">
+      <div class="header-content">
+        <button class="btn-back" onclick="navigateTo('dashboard-page')">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <div>
+          <h1 class="header-title">Pest & Disease Alerts</h1>
+          <p class="header-subtitle">Early detection and treatment recommendations</p>
+        </div>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="upload-card">
+        <div class="upload-placeholder">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+        </div>
+        <p class="upload-text">Upload or capture leaf images for AI-powered pest detection</p>
+        <button class="btn btn-primary">Upload Image</button>
+      </div>
+
+      <div class="alerts-list">
+        <div class="alert-card alert-high">
+          <div class="alert-header">
+            <div class="alert-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <div class="alert-info">
+              <h3 class="alert-title">Brown Leaf Spot <span class="alert-badge badge-high">HIGH</span></h3>
+              <p class="alert-description">Fungal disease affecting rice leaves</p>
+            </div>
+          </div>
+          <div class="alert-recommendation">
+            <h4 class="recommendation-title">Recommendation:</h4>
+            <p>Apply Mancozeb 75% WP @ 2g/liter. Ensure proper drainage and avoid excess nitrogen.</p>
+          </div>
+        </div>
+
+        <div class="alert-card alert-medium">
+          <div class="alert-header">
+            <div class="alert-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="m8 2 1.88 1.88"></path>
+                <path d="M14.12 3.88 16 2"></path>
+                <path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"></path>
+                <path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"></path>
+              </svg>
+            </div>
+            <div class="alert-info">
+              <h3 class="alert-title">Stem Borer <span class="alert-badge badge-medium">MEDIUM</span></h3>
+              <p class="alert-description">Insect pest damaging rice stems</p>
+            </div>
+          </div>
+          <div class="alert-recommendation">
+            <h4 class="recommendation-title">Recommendation:</h4>
+            <p>Use Cartap Hydrochloride 50% SP @ 1g/liter. Remove and destroy affected plants.</p>
+          </div>
+        </div>
+
+        <div class="alert-card alert-low">
+          <div class="alert-header">
+            <div class="alert-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+              </svg>
+            </div>
+            <div class="alert-info">
+              <h3 class="alert-title">Bacterial Leaf Blight <span class="alert-badge badge-low">LOW</span></h3>
+              <p class="alert-description">Bacterial infection on leaf margins</p>
+            </div>
+          </div>
+          <div class="alert-recommendation">
+            <h4 class="recommendation-title">Recommendation:</h4>
+            <p>Spray Copper Oxychloride 50% WP @ 3g/liter. Maintain field hygiene.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Weather Page -->
+  <div id="weather-page" class="page">
+    <header class="app-header">
+      <div class="header-content">
+        <button class="btn-back" onclick="navigateTo('dashboard-page')">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <div>
+          <h1 class="header-title">Weather Insights</h1>
+          <p class="header-subtitle">7-day forecast and rainfall predictions</p>
+        </div>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="weather-alert">
+        <div class="alert-icon-large">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 class="alert-title-large">Extreme Weather Alert</h3>
+          <p class="alert-text">Heavy rainfall expected on Thursday and Friday. Ensure proper drainage in fields and postpone fertilizer application.</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">7-Day Forecast</h2>
+      <div class="weather-grid">
+        <div class="weather-card">
+          <div class="weather-day">Mon</div>
+          <div class="weather-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5">
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </div>
+          <div class="weather-temp">28°C</div>
+          <div class="weather-condition">Sunny</div>
+        </div>
+
+        <div class="weather-card">
+          <div class="weather-day">Tue</div>
+          <div class="weather-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5">
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+            </svg>
+          </div>
+          <div class="weather-temp">27°C</div>
+          <div class="weather-condition">Partly Cloudy</div>
+        </div>
+
+        <div class="weather-card">
+          <div class="weather-day">Wed</div>
+          <div class="weather-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5">
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+            </svg>
+          </div>
+          <div class="weather-temp">26°C</div>
+          <div class="weather-condition">Cloudy</div>
+        </div>
+
+        <div class="weather-card">
+          <div class="weather-day">Thu</div>
+          <div class="weather-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2d7a3e" stroke-width="1.5">
+              <line x1="16" y1="13" x2="16" y2="21"></line>
+              <line x1="8" y1="13" x2="8" y2="21"></line>
+              <line x1="12" y1="15" x2="12" y2="23"></line>
+              <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path>
+            </svg>
+          </div>
+          <div class="weather-temp">25°C</div>
+          <div class="weather-condition">Rainy</div>
+        </div>
+
+        <div class="weather-card">
+          <div class="weather-day">Fri</div>
+          <div class="weather-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2d7a3e" stroke-width="1.5">
+              <line x1="16" y1="13" x2="16" y2="21"></line>
+              <line x1="8" y1="13" x2="8" y2="21"></line>
+              <line x1="12" y1="15" x2="12" y2="23"></line>
+              <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path>
+            </svg>
+          </div>
+          <div class="weather-temp">26°C</div>
+          <div class="weather-condition">Rainy</div>
+        </div>
+
+        <div class="weather-card">
+          <div class="weather-day">Sat</div>
+          <div class="weather-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5">
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+            </svg>
+          </div>
+          <div class="weather-temp">27°C</div>
+          <div class="weather-condition">Partly Cloudy</div>
+        </div>
+
+        <div class="weather-card">
+          <div class="weather-day">Sun</div>
+          <div class="weather-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5">
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </div>
+          <div class="weather-temp">29°C</div>
+          <div class="weather-condition">Sunny</div>
+        </div>
+      </div>
+
+      <div class="rainfall-card">
+        <h3 class="chart-title">Rainfall Prediction</h3>
+        <div class="rainfall-chart">
+          <div class="bar-chart">
+            <div class="bar-item">
+              <div class="bar-fill" style="height: 0%"></div>
+              <div class="bar-label">Mon</div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-fill" style="height: 10%"></div>
+              <div class="bar-label">Tue</div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-fill" style="height: 30%"></div>
+              <div class="bar-label">Wed</div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-fill" style="height: 90%"></div>
+              <div class="bar-label">Thu</div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-fill" style="height: 70%"></div>
+              <div class="bar-label">Fri</div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-fill" style="height: 20%"></div>
+              <div class="bar-label">Sat</div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-fill" style="height: 0%"></div>
+              <div class="bar-label">Sun</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav id="bottom-nav" class="bottom-nav">
+    <button class="nav-item active" onclick="navigateTo('dashboard-page')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Home</span>
+    </button>
+    <button class="nav-item" onclick="navigateTo('sensor-page')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="18" y1="20" x2="18" y2="10"></line>
+        <line x1="12" y1="20" x2="12" y2="4"></line>
+        <line x1="6" y1="20" x2="6" y2="14"></line>
+      </svg>
+      <span>Data</span>
+    </button>
+    <button class="nav-item" onclick="navigateTo('crop-page')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
+        <polyline points="10 9 9 9 8 9"></polyline>
+      </svg>
+      <span>Advisory</span>
+    </button>
+    <button class="nav-item" onclick="navigateTo('pest-page')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+        <line x1="12" y1="9" x2="12" y2="13"></line>
+        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+      </svg>
+      <span>Alerts</span>
+    </button>
+    <button class="nav-item" onclick="navigateTo('weather-page')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+      </svg>
+      <span>Weather</span>
+    </button>
+  </nav>
+
+  <!-- Voice Assistant Button -->
+  <button class="voice-btn" onclick="toggleVoice()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+      <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+      <line x1="12" y1="19" x2="12" y2="22"></line>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
